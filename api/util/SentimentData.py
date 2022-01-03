@@ -8,7 +8,7 @@ class SentimentData:
     def get_raddit_data(query):
         reddit = praw.Reddit(client_id='XWI3ykxxVjhkZd-L8I56qw', client_secret='kiPnpA2NNDevbL69_JWUYHyu32JaxQ',
                              user_agent='Sentiment Analysis')
-        hot_posts = reddit.subreddit(query).hot(limit=7)
+        hot_posts = reddit.subreddit(query).hot(limit=4)
         data = ""
         for post in hot_posts:
             data = data + " " + post.selftext
