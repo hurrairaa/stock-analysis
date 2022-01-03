@@ -8,7 +8,7 @@ import pandas as pd
 
 @api_view(['GET'])
 def get_sentiment_analysis(request):
-    finbert = pd.read_pickle(os.path.join(PROJECT_ROOT, 'FinBert.pkl'))
+    finbert = pd.read_pickle(os.path.join(PROJECT_ROOT+'/FinBert.pkl'))
     analysis_text = SentimentData.get_raddit_data('AAPL')
     result = finbert(analysis_text)
     return Response(result[0])
