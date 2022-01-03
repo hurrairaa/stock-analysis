@@ -17,4 +17,5 @@ class SentimentData:
 
     @staticmethod
     def clean_data(data):
-        return clean(data)
+        # return clean(data)
+        return data
