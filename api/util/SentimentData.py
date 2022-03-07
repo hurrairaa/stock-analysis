@@ -1,4 +1,6 @@
 import praw
+import requests
+import json
 from cleantext import clean
 
 
@@ -8,7 +10,9 @@ class SentimentData:
     def get_raddit_data(query):
         reddit = praw.Reddit(client_id='XWI3ykxxVjhkZd-L8I56qw', client_secret='kiPnpA2NNDevbL69_JWUYHyu32JaxQ',
                              user_agent='Sentiment Analysis')
-        hot_posts = reddit.subreddit(query).hot(limit=1)
+        hot_posts = reddit.subreddit(query).hot(limit=50)
+
+        return hot_posts
         data = ""
         for post in hot_posts:
             data = data + " " + post.selftext
@@ -19,3 +23,12 @@ class SentimentData:
     def clean_data(data):
         # return clean(data)
         return data
+
+    @staticmethod
+    def get_stock_twit_data(ticker):
+        url = "https://api.stocktwits.com/api/2/streams/symbol/"+ticker+".json"
+
+        response = requests.request("GET", url)
+
+        return json.loads(response.text)['messages']
+
