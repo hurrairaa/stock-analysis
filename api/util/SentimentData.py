@@ -11,7 +11,7 @@ class SentimentData:
         reddit = praw.Reddit(client_id='XWI3ykxxVjhkZd-L8I56qw', client_secret='kiPnpA2NNDevbL69_JWUYHyu32JaxQ',
                              user_agent='Sentiment Analysis')
         # hot_posts = reddit.subreddit(query).hot(limit=100)
-        hot_posts = reddit.subreddit("StockMarket+wallstreetbet+business").search("apple")
+        hot_posts = reddit.subreddit("StockMarket+wallstreetbet+business").search(query)
 
         return hot_posts
         data = ""
